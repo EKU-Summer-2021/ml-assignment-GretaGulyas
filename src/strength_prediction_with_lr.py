@@ -2,6 +2,8 @@
     Concrete strength prediction with linear regression.
 """
 
+# pylint: disable=too-few-public-methods
+
 import pandas as pd
 
 
