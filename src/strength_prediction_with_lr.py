@@ -6,9 +6,12 @@
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import numpy as np
+from sklearn.linear_model import LinearRegression
+import csv
 
 
-class ReadConcreteStrength:
+class ConcreteStrength:
     """
         Class with method that reads the concrete strength dataset.
     """
@@ -21,14 +24,6 @@ class ReadConcreteStrength:
         """
             Function for reading the CSV file.
         """
-        return pd.read_csv(self.dataset, names=['cement', 'slag', 'flyash', 'water', 'superplasticizer',
-                                                'coarseaggregate', 'fineaggregate', 'age', 'csMPa'])
+        return pd.read_csv(self.dataset, names=['cement', 'slag', 'fly ash', 'water', 'superplasticizer',
+                                                'coarse aggregate', 'fine aggregate', 'age', 'csMPa'])
 
-    def train_test_split(self):
-        """
-            Function for train-test split.
-        """
-
-        training_data, testing_data = train_test_split(self.concrete_strength_dataset, test_size=0.2, random_state=25)
-        print('Train', training_data.shape)
-        print('Test', testing_data.shape)
