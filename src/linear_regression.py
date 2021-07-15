@@ -1,13 +1,12 @@
 """
-    Concrete strength prediction with linear regression.
+    Linear regression.
 """
 
 # pylint: disable=too-few-public-methods
 from datetime import datetime
-
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split, GridSearchCV
-from src.strength_prediction_with_lr import ConcreteStrength
+from src.strength_prediction_with_lr import ReadDataset
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -18,9 +17,9 @@ class LRExample:
     def __init__(self, fit_intercept=True, normalize=False):
         self.model = LinearRegression(fit_intercept=fit_intercept, normalize=normalize)
 
-    def split_data(self, cs: ConcreteStrength):
+    def split_data(self, cs: ReadDataset):
         """
-            Function for train-test split.
+            Method for splitting the dataset.
         """
 
         X = cs.concrete_strength_dataset.iloc[:, :-1]
@@ -29,7 +28,7 @@ class LRExample:
 
     def train(self, x_train, y_train):
         """
-            Function for train-test split.
+            Method for train-test split.
         """
 
         self.model.fit(x_train, y_train)
@@ -37,14 +36,14 @@ class LRExample:
 
     def model_score(self, x_test, y_test):
         """
-            Function for train-test split.
+            Method that returns with the score of the model.
         """
 
         return self.model.score(x_test, y_test)
 
     def grid_search(self, params_space, x_train, y_train):
         """
-            Function that finds the best model.
+            Method that finds the best model.
         """
         search = GridSearchCV(self.model, params_space)
         search.fit(x_train, y_train)
@@ -53,7 +52,7 @@ class LRExample:
 
     def save_result(self):
         """
-
+            Method that creates a directory for every single output, and saves it in a csv file with its plot.
         """
         directory = 'Results'
         parent_dir = 'D:\Pycharm Projects\ml-assignment-GretaGulyas'
@@ -77,11 +76,17 @@ class LRExample:
         self.__save_output_to_plot(file_location)
 
     def __save_output_to_csv(self, file_location):
+        """
+            Private method that saves the output into a csv file.
+        """
         file_name = file_location + "/" + 'result'
         params = self.search.cv_results_
         params = pd.DataFrame(params)
         params.to_csv(file_name)
 
     def __save_output_to_plot(self, x_test, y_test):
+        """
+            Private method that saves the output plot into the csv file.
+        """
         plt.plot(x_test, y_test, color='k', label='Regression model')
         plt.show()

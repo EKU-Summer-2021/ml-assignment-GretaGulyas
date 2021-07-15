@@ -1,11 +1,12 @@
 """
     Main class.
 """
-from src.strength_prediction_with_lr import ConcreteStrength
+
+from src.strength_prediction_with_lr import ReadDataset
 from src.linear_regression import LRExample
 
 if __name__ == '__main__':
-    cs = ConcreteStrength(r'datasets/Concrete_Data_Yeh.csv')
+    cs = ReadDataset(r'datasets/Concrete_Data_Yeh.csv')
     lre = LRExample()
     x_train, x_test, y_train, y_test = lre.split_data(cs)
     lre.train(x_train, y_train)

@@ -5,15 +5,11 @@
 # pylint: disable=too-few-public-methods
 
 import pandas as pd
-from sklearn.model_selection import train_test_split
-import numpy as np
-from sklearn.linear_model import LinearRegression
-import csv
 
 
-class ConcreteStrength:
+class ReadDataset:
     """
-        Class with method that reads the concrete strength dataset.
+        Class with method that reads the dataset.
     """
 
     def __init__(self, dataset_location):
@@ -25,5 +21,4 @@ class ConcreteStrength:
             Function for reading the CSV file.
         """
         return pd.read_csv(self.dataset, names=['cement', 'slag', 'fly ash', 'water', 'superplasticizer',
-                                                'coarse aggregate', 'fine aggregate', 'age', 'csMPa'])
-
+                                                'coarseaggregate', 'fineaggregate', 'age', 'csMPa'])
