@@ -17,4 +17,4 @@ if __name__ == '__main__':
     print(lre.model_score(x_test, y_test))
     best_model = lre.grid_search(param_grid, x_train, y_train)
     print(best_model.score(x_test, y_test))
-    lre.save_result()
+    lre.save_result(x_test, y_test)
