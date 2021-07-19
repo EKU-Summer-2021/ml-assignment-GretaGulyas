@@ -73,8 +73,6 @@ class LRExample:
         if not isdir:
             os.mkdir(path)
         file_location = os.path.join(path, datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
-        path = os.path.join(path, directory)
-        isdir = os.path.isdir(file_location)
         os.mkdir(file_location)
         self.__save_output_to_csv(file_location)
         self.__save_output_comparison_to_plot(file_location, self.search.best_estimator_, x_test, y_test)
