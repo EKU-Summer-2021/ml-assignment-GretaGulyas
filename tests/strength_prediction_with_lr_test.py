@@ -1,7 +1,7 @@
 import unittest
 import pandas as pd
 
-from src.strength_prediction_with_lr import ReadDataset
+from src.concrete_strength_dataset_read import ReadDataset
 
 
 class CSVReadDataTest(unittest.TestCase):
@@ -11,6 +11,6 @@ class CSVReadDataTest(unittest.TestCase):
         # given
         EXPECTED = True
         # when
-        ACTUAL = isinstance(rd.concrete_strength_dataset_read(), pd.DataFrame)
+        ACTUAL = isinstance(rd.dataset_read(), pd.DataFrame)
         # then
         self.assertEqual(EXPECTED, ACTUAL)
