@@ -2,7 +2,7 @@
     Main class.
 """
 
-from src.strength_prediction_with_lr import ReadDataset
+from src.concrete_strength_dataset_read import ReadDataset
 from src.linear_regression import LRExample
 
 if __name__ == '__main__':

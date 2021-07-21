@@ -1,13 +1,22 @@
+"""
+    Linear regression test.
+"""
+
 import unittest
 from src.linear_regression import LRExample
-from src.strength_prediction_with_lr import ReadDataset
+from src.concrete_strength_dataset_read import ReadDataset
 from sklearn.linear_model import LinearRegression
 
-#test
 
 class LinearRegressionTest(unittest.TestCase):
+    """
+        Linear regression test method.
+    """
 
     def test_read(self):
+        """
+            Linear regression testing.
+        """
         cs = ReadDataset(r'../datasets/Concrete_Data_Yeh.csv')
         lre = LRExample(r'../datasets/Concrete_Data_Yeh.csv')
         x_train, x_test, y_train, y_test = lre.split_data(cs)

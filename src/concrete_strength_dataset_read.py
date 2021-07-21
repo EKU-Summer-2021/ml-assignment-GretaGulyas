@@ -14,9 +14,9 @@ class ReadDataset:
 
     def __init__(self, dataset_location):
         self.dataset = dataset_location
-        self.concrete_strength_dataset = self.concrete_strength_dataset_read()
+        self.concrete_strength_dataset = self.dataset_read()
 
-    def concrete_strength_dataset_read(self):
+    def dataset_read(self):
         """
             Function for reading the CSV file.
         """

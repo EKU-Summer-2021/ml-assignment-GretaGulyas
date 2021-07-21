@@ -11,7 +11,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split, GridSearchCV
 
-from src.strength_prediction_with_lr import ReadDataset
+from src.concrete_strength_dataset_read import ReadDataset
 
 
 class LRExample:
