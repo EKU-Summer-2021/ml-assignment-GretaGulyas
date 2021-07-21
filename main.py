@@ -6,7 +6,7 @@ from src.concrete_strength_dataset_read import ReadDataset
 from src.linear_regression import LRExample
 
 if __name__ == '__main__':
-    cs = ReadDataset(r'datasets/Concrete_Data_Yeh.csv')
+    cs = ReadDataset('https://raw.githubusercontent.com/EKU-Summer-2021/ml-assignment-GretaGulyas/master/datasets/Concrete_Data_Yeh.csv')
     lre = LRExample()
     x_train, x_test, y_train, y_test = lre.split_data(cs)
     lre.train(x_train, y_train)

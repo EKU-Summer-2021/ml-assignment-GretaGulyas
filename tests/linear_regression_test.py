@@ -17,8 +17,8 @@ class LinearRegressionTest(unittest.TestCase):
         """
             Linear regression testing.
         """
-        cs = ReadDataset(r'../datasets/Concrete_Data_Yeh.csv')
-        lre = LRExample(r'../datasets/Concrete_Data_Yeh.csv')
+        cs = ReadDataset('https://raw.githubusercontent.com/EKU-Summer-2021/ml-assignment-GretaGulyas/master/datasets/Concrete_Data_Yeh.csv')
+        lre = LRExample('https://raw.githubusercontent.com/EKU-Summer-2021/ml-assignment-GretaGulyas/master/datasets/Concrete_Data_Yeh.csv')
         x_train, x_test, y_train, y_test = lre.split_data(cs)
         param_grid = [
             {'fit_intercept': [True, False],
@@ -32,8 +32,8 @@ class LinearRegressionTest(unittest.TestCase):
         self.assertEqual(EXPECTED, ACTUAL)
 
     def test_score(self):
-        cs = ReadDataset(r'../datasets/Concrete_Data_Yeh.csv')
-        lre = LRExample(r'../datasets/Concrete_Data_Yeh.csv')
+        cs = ReadDataset('https://raw.githubusercontent.com/EKU-Summer-2021/ml-assignment-GretaGulyas/master/datasets/Concrete_Data_Yeh.csv')
+        lre = LRExample('https://raw.githubusercontent.com/EKU-Summer-2021/ml-assignment-GretaGulyas/master/datasets/Concrete_Data_Yeh.csv')
         x_train, x_test, y_train, y_test = lre.split_data(cs)
         param_grid = [
             {'fit_intercept': [True, False],
