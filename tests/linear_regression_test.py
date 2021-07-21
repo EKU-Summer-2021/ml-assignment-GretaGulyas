@@ -63,6 +63,7 @@ class LinearRegressionTest(unittest.TestCase):
         # when
         lre.grid_search(param_grid, x_train, y_train)
         lre.save_result(x_test, y_test)
+        print(os.getcwd())
         ACTUAL = os.path.isdir('../Results')
         # then
         self.assertEqual(EXPECTED, ACTUAL)
