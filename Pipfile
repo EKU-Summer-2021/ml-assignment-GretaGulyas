@@ -9,6 +9,9 @@ coverage = '*'
 
 [packages]
 numpy = '*'
+matplotlib = "*"
+pandas = "*"
+scikit-learn = "*"
 
 [requires]
 python_version = "3.8"
