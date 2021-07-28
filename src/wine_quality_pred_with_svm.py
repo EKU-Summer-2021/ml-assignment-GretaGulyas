@@ -4,7 +4,6 @@
 
 import os
 # pylint: disable=too-few-public-methods
-from src.wine_quality_prediction_with_svm_read import ReadData
 from datetime import datetime
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -23,13 +22,13 @@ class SVMExample:
         self.search: GridSearchCV
 
     @classmethod
-    def split_data(cls, cs_read: ReadData):
+    def split_data(cls, dataset):
         """
             Method for splitting the dataset.
         """
 
-        features = cs_read.dataset_read().iloc[:, :-1]
-        target = cs_read.dataset_read().iloc[:, -1:].values
+        features = dataset.iloc[:, :-1]
+        target = dataset.iloc[:, -1:].values
         print(target)
         return train_test_split(features, target, test_size=0.2)
 
@@ -40,7 +39,7 @@ class SVMExample:
         scale = StandardScaler()
         x_scaled = scale.fit_transform(x_train)
         y_scaled = scale.fit_transform(y_train.reshape(-1, 1))
-        self.model.fit(x_train, y_train)
+        self.model.fit(x_scaled, y_scaled)
         return self.model
 
     def model_score(self, x_test, y_test):
@@ -57,7 +56,7 @@ class SVMExample:
 
         svc = SVC()
         search = GridSearchCV(svc, param_grid, cv=2, verbose=3)
-        search.fit(x_train, y_train)
+        search.fit(x_train, y_train.reshape(-1, 1))
         self.search = search
         return self.search.best_estimator_
 
@@ -81,6 +80,7 @@ class SVMExample:
         self.__save_output_to_csv(file_location)
         self.__save_output_comparison_to_plot(file_location, self.search.best_estimator_, x_test, y_test)
         self.__save_plot_error(file_location, self.search.best_estimator_, x_test, y_test)
+        return path
 
     def __save_output_to_csv(self, file_location):
         """
